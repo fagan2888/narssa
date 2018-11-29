@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="jquery-3.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../static/js/index.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../static/css/std_rules.css">
+<link rel="stylesheet" type="text/css" href="../static/css/home_login.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<title>Samachaar</title>
+</head>
+<body>
+	<div class="margin-top-30">
+	</div>
+	<div class="row" id="">
+		<div class="col-md-12">
+			<div class="col-md-9">
+				<h1 class="text-muted">Samachaar</h1>
+			</div>
+			<div class="col-md-3 margin-top-15">
+				<div class="btn-group">
+                	<button class="btn btn-mini btn-success">{{username}}</button>
+                	<button class="btn btn-mini dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                	<ul class="dropdown-menu">
+                		
+                		<li><a href="/">Logout</a></li>
+                	</ul>
+            	</div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<hr>
+		</div>
+		<div class="col-md-12" id="contentPanel">
+			<ul class="nav nav-tabs" role="tablist" id="tabHeader">
+				<li role="presentation" class="active">
+					<a href="#tabSubscribe" data-toggle="tab" aria-expanded="true">Subscriptions</a>
+				</li>
+				<li role="presentation">
+					<a href="#tabExplore" data-toggle="tab" aria-expanded="false">Explore</a>
+				</li>
+			</ul>
+			<div class="col-md-12 tab-content">
+				<form class="tab-pane active" id="tabSubscribe">
+					{%  for x in range(glength) %}
+					{% if genres[x] == 1 %} 
+					<div class="genreContent" id="nationalSub">
+						<div class="header">		
+							<h2 > National </h2>
+						</div>
+						{% for i in range(3) %}
+						<div class="container-fluid margin-top-15 background-color-light-blue round-corner" id="">
+							<div class="row">
+							    <div class="col-md-3">
+									<figure>
+										<img src="{{url_for('static',filename='images/'+articles[genres[x]-1][i]['Image'])}}" alt="About image" width="200px" height="250px"/>
+									</figure>
+								</div>
+								<div class="col-md-9">
+									<h4 class="font-family-Baskerville-Old-Face"><a href="/articleview/{{ articles[genres[x]-1][i]['ArticleId'] }}" id ="{{ articles[genres[x]-1][i]['ArticleId'] }}">{{ articles[genres[x]-1][i]['Headline'] }}</a></h4>
+									<h6>{{ articles[genres[x]-1][i]['Date'] }}</h6>
+									<p>{{ articles[genres[x]-1][i]['Summary'] }} </p>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+						<nav aria-label="...">
+							<ul class="pager">
+								<li class="next"><a href="/loadmore/{{genres[x]}} ">Load more <span aria-hidden="true"></span></a></li>
+							</ul>
+			            </nav>
+					</div>
+					{% elif genres[x] == 2 %} 
+					<div class="genreContent" id="internationalSub">
+						<div class="header">
+							<h2 > International </h2>
+							</div>
+							{% for i in range(3) %}
+							<div class="container-fluid margin-top-15 background-color-light-blue round-corner" id="">
+								<div class="row">
+								    <div class="col-md-3">
+										<figure>
+											<img src="{{url_for('static',filename='images/'+articles[genres[x]-1][i]['Image'])}}" alt="About image" width="200px" height="250px"/>
+										</figure>
+									</div>
+									<div class="col-md-9">
+										<h4 class="font-family-Baskerville-Old-Face"><a href="/articleview/{{ articles[genres[x]-1][i]['ArticleId'] }}" id ="{{ articles[genres[x]-1][i]['ArticleId'] }}">{{ articles[genres[x]-1][i]['Headline'] }}</a></h4>
+										<h6>{{ articles[genres[x]-1][i]['Date'] }}</h6>
+										<p>{{ articles[genres[x]-1][i]['Summary'] }} </p>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+							<nav aria-label="...">
+								<ul class="pager">
+									<li class="next"><a href="/loadmore/{{genres[x]}}">Load more <span aria-hidden="true"></span></a></li>
+								</ul>
+				            </nav>
+						</div>
+						{% elif genres[x] == 3 %} 
+						<div class="genreContent" id="businessSub">
+							<div class="header">
+								<h2 > Business </h2>
+							</div>
+							{% for i in range(3) %}
+							<div class="container-fluid margin-top-15 background-color-light-blue round-corner" id="">
+								<div class="row">
+								    <div class="col-md-3">
+										<figure>
+											<img src="{{url_for('static',filename='images/'+articles[genres[x]-1][i]['Image'])}}" alt="About image" width="200px" height="250px"/>
+										</figure>
+									</div>
+									<div class="col-md-9">
+										<h4 class="font-family-Baskerville-Old-Face"><a href="/articleview/{{ articles[genres[x]-1][i]['ArticleId'] }}" id ="{{ articles[genres[x]-1][i]['ArticleId'] }}">{{ articles[genres[x]-1][i]['Headline'] }}</a></h4>
+										<h6>{{ articles[genres[x]-1][i]['Date'] }}</h6>
+										<p>{{ articles[genres[x]-1][i]['Summary'] }} </p>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+							<nav aria-label="...">
+								<ul class="pager">
+									<li class="next"><a href="/loadmore/{{ genres[x] }}">Load more <span aria-hidden="true"></span></a></li>
+								</ul>
+				            </nav>
+						</div>
+						{% elif genres[x] == 4 %} 
+						<div class="genreContent" id="technologySub">
+							<div class="header">
+								<h2 > Technology </h2>
+							</div>
+							{% for i in range(3) %}
+							<div class="container-fluid margin-top-15 background-color-light-blue round-corner" id="">
+								<div class="row">
+								    <div class="col-md-3">
+										<figure>
+											<img src="{{url_for('static',filename='images/'+articles[genres[x]-1][i]['Image'])}}" alt="About image" width="200px" height="250px"/>
+										</figure>
+									</div>
+									<div class="col-md-9">
+										<h4 class="font-family-Baskerville-Old-Face"><a href="/articleview/{{ articles[genres[x]-1][i]['ArticleId'] }}" id ="{{ articles[genres[x]-1][i]['ArticleId'] }}">{{ articles[genres[x]-1][i]['Headline'] }}</a></h4>
+										<h6>{{ articles[genres[x]-1][i]['Date'] }}</h6>
+										<p>{{ articles[genres[x]-1][i]['Summary'] }} </p>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+							<nav aria-label="...">
+								<ul class="pager">
+									<li class="next"><a href="/loadmore/{{ genres[x] }}">Load more <span aria-hidden="true"></span></a></li>
+								</ul>
+				            </nav>
+						</div>
+						{% elif genres[x] == 5 %} 
+						<div class="genreContent" id="lifestyleSub">
+							<div class="header">
+								<h2 > Lifestyle </h2>
+								{% for i in range(3) %}
+							</div>
+							<div class="container-fluid margin-top-15 background-color-light-blue round-corner" id="">
+								<div class="row">
+								    <div class="col-md-3">
+										<figure>
+											<img src="{{url_for('static',filename='images/'+articles[genres[x]-1][i]['Image'])}}" alt="About image" width="200px" height="250px"/>
+										</figure>
+									</div>
+									<div class="col-md-9">
+										<h4 class="font-family-Baskerville-Old-Face"><a href="/articleview/{{ articles[genres[x]-1][i]['ArticleId'] }}" id ="{{ articles[genres[x]-1][i]['ArticleId'] }}">{{ articles[genres[x]-1][i]['Headline'] }}</a></h4>
+										<h6>{{ articles[genres[x]-1][i]['Date'] }}</h6>
+										<p>{{ articles[genres[x]-1][i]['Summary'] }} </p>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+							<nav aria-label="...">
+								<ul class="pager">
+									<li class="next"><a href="/loadmore/{{ genres[x] }}">Load more <span aria-hidden="true"></span></a></li>
+								</ul>
+				            </nav>
+						</div>
+						{% elif genres[x] == 6 %} 
+						<div class="genreContent" id="sportsSub">
+							<div class="header">
+								<h2 > Sports </h2>
+							</div>
+							{% for i in range(3) %}
+							<div class="container-fluid margin-top-15 background-color-light-blue round-corner" id="">
+								<div class="row">
+								    <div class="col-md-3">
+										<figure>
+											<img src="{{url_for('static',filename='images/'+articles[genres[x]-1][i]['Image'])}}" alt="About image" width="200px" height="250px"/>
+										</figure>
+									</div>
+									<div class="col-md-9">
+										<h4 class="font-family-Baskerville-Old-Face"><a href="/articleview/{{ articles[genres[x]-1][i]['ArticleId'] }}" id ="{{ articles[genres[x]-1][i]['ArticleId'] }}">{{ articles[genres[x]-1][i]['Headline'] }}</a></h4>
+										<h6>{{ articles[genres[x]-1][i]['Date'] }}</h6>
+										<p>{{ articles[genres[x]-1][i]['Summary'] }} </p>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+							<nav aria-label="...">
+								<ul class="pager">
+									<li class="next"><a href="/loadmore/{{ genres[x] }}">Load more <span aria-hidden="true"></span></a></li>
+								</ul>
+				            </nav>
+						</div>
+						{% elif genres[x] == 7 %}
+						<div class="genreContent" id="entertainmentSub">
+							<div class="header">
+								<h2 > Entertainment </h2>
+							</div>
+							{% for i in range(3) %}
+							<div class="container-fluid margin-top-15 background-color-light-blue round-corner" id="">
+								<div class="row">
+								    <div class="col-md-3">
+										<figure>
+											<img src="{{url_for('static',filename='images/'+articles[genres[x]-1][i]['Image'])}}" alt="About image" width="200px" height="250px"/>
+										</figure>
+									</div>
+									<div class="col-md-9">
+										<h4 class="font-family-Baskerville-Old-Face"><a href="/articleview/{{ articles[genres[x]-1][i]['ArticleId'] }}" id ="{{ articles[genres[x]-1][i]['ArticleId'] }}">{{ articles[genres[x]-1][i]['Headline'] }}</a></h4>
+										<h6>{{ articles[genres[x]-1][i]['Date'] }}</h6>
+										<p>{{ articles[genres[x]-1][i]['Summary'] }} </p>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+
+							<nav aria-label="...">
+								<ul class="pager">
+									<li class="next"><a href="/loadmore/{{ genres[x] }}">Load more <span aria-hidden="true"></span></a></li>
+								</ul>
+				            </nav>
+						</div>
+							{% endif %}
+						{%  endfor %}
+					</form>
+					<form class="tab-pane" id="tabExplore">
+						{%  for x in range(nglength) %}
+						{% if nongenres[x] == 1 %} 
+						<div class="genreContent" id="nationalExp">
+							<div class="header">
+								<h2 > National </h2>
+							</div>
+							{% for i in range(3) %}
+							<div class="container-fluid margin-top-15 background-color-light-blue round-corner" id="">
+								<div class="row">
+								    <div class="col-md-3">
+										<figure>
+											<img src="{{url_for('static',filename='images/'+narticles[nongenres[x]-1][i]['Image'])}}" alt="About image" width="200px" height="250px"/>
+										</figure>
+									</div>
+									<div class="col-md-9">
+										<h4 class="font-family-Baskerville-Old-Face"><a href="" id ="">{{ narticles[nongenres[x]-1][i]['Headline'] }}</a></h4>
+										<h6>{{ narticles[nongenres[x]-1][i]['Date'] }}</h6>
+										<p>{{ narticles[nongenres[x]-1][i]['Summary'] }} </p>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+							<nav aria-label="...">
+								<ul class="pager">
+									<li class="next"><a href="/loadmore/{{ nongenres[x]}}">Load more <span aria-hidden="true"></span></a></li>
+								</ul>
+				            </nav>
+						</div>
+						{% elif nongenres[x] == 2 %}
+						<div class="genreContent" id="internationalExp">
+							<div class="header">
+								<h2 > International </h2>
+							</div>
+							{% for i in range(3) %}
+							<div class="container-fluid margin-top-15 background-color-light-blue round-corner" id="">
+								<div class="row">
+								    <div class="col-md-3">
+										<figure>
+											<img src="{{url_for('static',filename='images/'+narticles[nongenres[x]-1][i]['Image'])}}" alt="About image" width="200px" height="250px"/>
+										</figure>
+									</div>
+									<div class="col-md-9">
+										<h4 class="font-family-Baskerville-Old-Face"><a href="/articleview/{{ narticles[nongenres[x]-1][i]['ArticleId'] }}" id ="{{ narticles[nongenres[x]-1][i]['ArticleId'] }}">{{ narticles[nongenres[x]-1][i]['Headline'] }}</a></h4>
+										<h6>{{ narticles[nongenres[x]-1][i]['Date'] }}</h6>
+										<p>{{ narticles[nongenres[x]-1][i]['Summary'] }} </p>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+							<nav aria-label="...">
+								<ul class="pager">
+									<li class="next"><a href="/loadmore/{{nongenres[x]}}">Load more <span aria-hidden="true"></span></a></li>
+								</ul>
+				            </nav>
+						</div>
+						{% elif nongenres[x] == 3 %}
+						<div class="genreContent" id="businessExp">
+							<div class="header">
+								<h2 > Business </h2>
+							</div>
+							{% for i in range(3) %}
+							<div class="container-fluid margin-top-15 background-color-light-blue round-corner" id="">
+								<div class="row">
+								    <div class="col-md-3">
+										<figure>
+											<img src="{{url_for('static',filename='images/'+narticles[nongenres[x]-1][i]['Image'])}}" alt="About image" width="200px" height="250px"/>
+										</figure>
+									</div>
+									<div class="col-md-9">
+										<h4 class="font-family-Baskerville-Old-Face"><a href="/articleview/{{ narticles[nongenres[x]-1][i]['ArticleId'] }}" id ="{{ narticles[nongenres[x]-1][i]['ArticleId'] }}">{{ narticles[nongenres[x]-1][i]['Headline'] }}</a></h4>
+										<h6>{{ narticles[nongenres[x]-1][i]['Date'] }}</h6>
+										<p>{{ narticles[nongenres[x]-1][i]['Summary'] }} </p>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+							<nav aria-label="...">
+								<ul class="pager">
+									<li class="next"><a href="/loadmore/{{ nongenres[x] }}">Load more <span aria-hidden="true"></span></a></li>
+								</ul>
+				            </nav>
+						</div>
+						{% elif nongenres[x] == 4 %}
+						<div class="genreContent" id="technologyExp">
+							<div class="header">
+								<h2 > Technology </h2>
+							</div>
+							{% for i in range(3) %}
+							<div class="container-fluid margin-top-15 background-color-light-blue round-corner" id="">
+								<div class="row">
+								    <div class="col-md-3">
+										<figure>
+											<img src="{{url_for('static',filename='images/'+narticles[nongenres[x]-1][i]['Image'])}}" alt="About image" width="200px" height="250px"/>
+										</figure>
+									</div>
+									<div class="col-md-9">
+										<h4 class="font-family-Baskerville-Old-Face"><a href="/articleview/{{ narticles[nongenres[x]-1][i]['ArticleId'] }}" id ="{{ narticles[nongenres[x]-1][i]['ArticleId'] }}">{{ narticles[nongenres[x]-1][i]['Headline'] }}</a></h4>
+										<h6>{{ narticles[nongenres[x]-1][i]['Date'] }}</h6>
+										<p>{{ narticles[nongenres[x]-1][i]['Summary'] }} </p>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+							<nav aria-label="...">
+								<ul class="pager">
+									<li class="next"><a href="/loadmore/{{ nongenres[x] }}">Load more <span aria-hidden="true"></span></a></li>
+								</ul>
+				            </nav>
+						</div>
+						{% elif nongenres[x] == 5 %}
+						<div class="genreContent" id="lifestyleExp">
+							<div class="header">
+								<h2 > Lifestyle </h2>
+							</div>
+							{% for i in range(3) %}
+							<div class="container-fluid margin-top-15 background-color-light-blue round-corner" id="">
+								<div class="row">
+								    <div class="col-md-3">
+										<figure>
+											<img src="{{url_for('static',filename='images/'+narticles[nongenres[x]-1][i]['Image'])}}" alt="About image" width="200px" height="250px"/>
+										</figure>
+									</div>
+									<div class="col-md-9">
+										<h4 class="font-family-Baskerville-Old-Face"><a href="/articleview/{{ narticles[nongenres[x]-1][i]['ArticleId'] }}" id ="{{ narticles[nongenres[x]-1][i]['ArticleId'] }}">{{ narticles[nongenres[x]-1][i]['Headline'] }}</a></h4>
+										<h6>{{ narticles[nongenres[x]-1][i]['Date'] }}</h6>
+										<p>{{ narticles[nongenres[x]-1][i]['Summary'] }} </p>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+							<nav aria-label="...">
+								<ul class="pager">
+									<li class="next"><a href="/loadmore/{{ nongenres[x] }}">Load more <span aria-hidden="true"></span></a></li>
+								</ul>
+				            </nav>
+						</div>
+						{% elif nongenres[x] == 6 %}
+						<div class="genreContent" id="sportsExp">
+							<div class="header">
+								<h2 > Sports </h2>
+							</div>
+							{% for i in range(3) %}
+							<div class="container-fluid margin-top-15 background-color-light-blue round-corner" id="">
+								<div class="row">
+								    <div class="col-md-3">
+										<figure>
+											<img src="{{url_for('static',filename='images/'+narticles[nongenres[x]-1][i]['Image'])}}" alt="About image" width="200px" height="250px"/>
+										</figure>
+									</div>
+									<div class="col-md-9">
+										<h4 class="font-family-Baskerville-Old-Face"><a href="/articleview/{{ narticles[nongenres[x]-1][i]['ArticleId'] }}" id ="{{ narticles[nongenres[x]-1][i]['ArticleId'] }}">{{ narticles[nongenres[x]-1][i]['Headline'] }}</a></h4>
+										<h6>{{ narticles[nongenres[x]-1][i]['Date'] }}</h6>
+										<p>{{ narticles[nongenres[x]-1][i]['Summary'] }} </p>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+							<nav aria-label="...">
+								<ul class="pager">
+									<li class="next"><a href="/loadmore/{{ nongenres[x] }}">Load more <span aria-hidden="true"></span></a></li>
+								</ul>
+				            </nav>
+						</div>
+						{% elif nongenres[x] == 7 %}
+						<div class="genreContent" id="entertainmentExp">
+							<div class="header">
+								<h2 > Entertainment </h2>
+							</div>
+							{% for i in range(3) %}
+							<div class="container-fluid margin-top-15 background-color-light-blue round-corner" id="">
+								<div class="row">
+								    <div class="col-md-3">
+										<figure>
+											<img src="{{url_for('static',filename='images/'+narticles[nongenres[x]-1][i]['Image'])}}" alt="About image" width="200px" height="250px"/>
+										</figure>
+									</div>
+									<div class="col-md-9">
+										<h4 class="font-family-Baskerville-Old-Face"><a href="/articleview/{{ narticles[nongenres[x]-1][i]['ArticleId'] }}" id ="{{ narticles[nongenres[x]-1][i]['ArticleId'] }}">{{ narticles[nongenres[x]-1][i]['Headline'] }}</a></h4>
+										<h6>{{ narticles[nongenres[x]-1][i]['Date'] }}</h6>
+										<p>{{ narticles[nongenres[x]-1][i]['Summary'] }} </p>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+							<nav aria-label="...">
+								<ul class="pager">
+									<li class="next"><a href="/loadmore/{{ nongenres[x] }}">Load more <span aria-hidden="true"></span></a></li>
+								</ul>
+				            </nav>
+						</div>
+						{%  endif %}
+						{%  endfor %}
+					</form>
+				</div>
+		</div>
+	</div>
+</body>
+<script>
+	$(document).ready(function(){
+   		$('#tabHeader a').click(function (e) {
+     		e.preventDefault();
+     		$(this).tab('show');
+   		});
+   	});
+</script>
+</html>

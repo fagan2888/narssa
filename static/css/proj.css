@@ -1,0 +1,96 @@
+body {
+	width: 1050px;
+    height: 600px;
+	margin-right: 150px !important;
+    margin-left: 150px !important;
+}
+.margin-top-15{
+	margin-top: 15px;
+}
+.background-color-light-blue{
+	background-color: #000022;
+}
+.nav-pills{
+	font-family: 'Open Sans Condensed',sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+	border-radius: 0px;
+	background-color: aliceblue;
+}
+.nav-pills>li>a {
+    border-radius: 0px !important;
+}
+#titleName{
+	font-family: 'Goudy Stout';
+	font-weight: 700;
+	color: #000000;
+	font-size: 25px;
+}
+#logInBtn{
+	font-size: 16px;
+	font-weight: 700;
+	color: #000000;
+}
+#searchBox{
+	border-radius: 15px;
+}
+#introImage{
+	background-image: url("images/host-image.jpg");
+	background-size: 1100px 550px;
+	height: 550px;
+}
+.margin-top-75{
+	margin-top: 75px;
+}
+.font-size-24{
+	font-size: 24px;
+}
+.font-family-cooperBlack{
+	font-family: 'Cooper Black';
+}
+.hide-object{
+	visibility: hidden;
+}
+.remove-object{
+	visibility: none;
+}
+.modal-dialog {
+    width: 400px !important;
+    margin: 120px auto !important;
+}
+.modal-content {
+    border-radius: 0px !important;
+}
+.modal-header {
+	background-color: #000000;
+	border-bottom: 2px solid #000000 !important;
+	color: #ffffff;
+}
+.margin-top-30 {
+	margin-top: 30px;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+#contentPanel {
+    padding: 30px 30px 30px 30px;
+}
+#newsContainer figure {
+	width: 540px;
+    height: auto;
+    float: left;
+    margin: 3px;
+    padding: 3px;
+	box-shadow: 1px 1px 15px #000000;
+}
+.background-color-light-blue {
+	background-color: #B4CDCD;
+}
+.font-family-Franklin-Gothic {
+	font-family: "Franklin Gothic";
+}
+.container-fluid figcaption p {
+	font-family: "Segoe UI Semibold";
+	margin-top: 15px;
+}

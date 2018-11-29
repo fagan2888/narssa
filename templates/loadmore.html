@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="jquery-3.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../static/js/index.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="../static/css/std_rules.css">
+<link rel="stylesheet" type="text/css" href="../static/css/home_login.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<title>Samachaar</title>
+</head>
+<body>
+	<div class="margin-top-30">
+	</div>
+	<div class="row" id="">
+		<div class="col-md-12">
+			<div class="col-md-9">
+				<h1 class="text-muted">Samachaar</h1>
+			</div>
+			<div class="col-md-3">
+				<div class="btn-group margin-top-15">
+                	<button class="btn btn-mini btn-success">{{username}}</button>
+                	<button class="btn btn-mini dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                	<ul class="dropdown-menu">
+                		
+                		<li><a href="/">Logout</a></li>
+                	</ul>
+            	</div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<hr>
+		</div>
+		<div class="genreContent" id="">
+			<div class="header">
+				<h2 > {{genre}} </h2>
+			</div>
+			{% for i in range(length_genre) %}
+			<div class="container-fluid margin-top-15 background-color-light-blue round-corner" id="">
+				<div class="row">
+				    <div class="col-md-3">
+						<figure>
+							<img src="{{url_for('static',filename='images/'+articles[i]['Image'])}}" alt="About image" width="200px" height="250px"/>
+						</figure>
+					</div>
+					<div class="col-md-9">
+						<h4 class="font-family-Baskerville-Old-Face"><a href="/articleview/{{ articles[i]['ArticleId'] }}" id ="">{{ articles[i]['Headline'] }}</a></h4>
+						<h6>{{ articles[i]['Date'] }}</h6>
+						<p>{{ articles[i]['Summary'] }} </p>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</body>
+</html>

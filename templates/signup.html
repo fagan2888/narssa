@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="../static/js/jquery-3.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../static/js/jquery-3.1.1.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="../static/css/std_rules.css">
+<link rel="stylesheet" type="text/css" href="../static/css/index.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<title>Samachaar</title>
+</head>
+<body>
+	<div class="margin-top-30">
+	</div>
+	<div class="row" id="">
+		<div id="" class="container-fluid">
+			<div class="col-md-12">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<div class="header">
+						<h1 class="text-muted">Samachaar</h1>
+					</div>
+					<hr>
+					<div class="jumbotron">
+						<ul class="nav nav-tabs nav-justified">
+							<li role="presentation" class="active">
+								<a href="#sign-inDetails" data-toggle="tab">Sign In</a>
+							</li>
+							<li role="presentation">
+								<a href="#sign-upDetails" data-toggle="tab">Sign Up</a>
+							</li>
+						</ul>
+						<div class="margin-top-30">
+						</div>
+							<div class="tab-content">
+								<form action="/login" method="post" class="tab-pane active" id="sign-inDetails">
+									<p class=error font-color="red"><strong> {{ error }}</strong></p>
+									<label for="inputEmail" class="sr-only">Email address</label>
+									<input type="email" name="inputEmail2" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+									<div class="margin-top-15">
+									</div>
+									<label for="inputPassword" class="sr-only">Password</label>
+									<input type="password" name="inputPassword2" id="inputPassword" class="form-control" placeholder="Password" required>
+									<div class="margin-top-30">
+									</div>
+									
+									<p align="center"><input type="submit" align="center" class="btn btn-lg btn-success" name="submit" id="btn-signin" value="Good To Go">
+            </p>
+								</form>
+						
+						
+								<form action= "/signup" method="post" class="tab-pane" id="sign-upDetails">
+									<p class=error font-color="red"><strong> {{ error }}</strong></p>
+									<label for="inputUname" class="sr-only">Username</label>
+									<input type="name" name="inputUname1" id="inputUname" class="form-control" placeholder="Username" required autofocus>
+									<div class="margin-top-15">
+									</div>
+									<label for="inputEmail" class="sr-only">Email address</label>
+									<input type="email" name="inputEmail1" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+									<div class="margin-top-15">
+									</div>
+									<label for="inputPassword" class="sr-only">Password</label>
+									<input type="password" name="inputPassword1" id="inputPassword" class="form-control" placeholder="Password" required>
+									<div class="margin-top-15">
+									</div>
+									<label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
+									<input type="password" name="inputConfirmPassword1" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required>
+									<div class="margin-top-30">
+									</div>
+									
+									<p align="center"><input type="submit" align="center" class="btn btn-lg btn-success" name="submit" id ="btn-signup" value="Good To Go">
+            </p>
+								</form>
+							
+							</div>
+					</div>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

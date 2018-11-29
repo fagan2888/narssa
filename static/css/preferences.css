@@ -1,0 +1,16 @@
+.jumbotron .btn-default{
+	border-radius: 25px !important;
+	min-width: 173px;
+	border-color: #ffffff;
+	outline: none !important;
+}
+.jumbotron .btn-success{
+	border-radius: 30px;
+	outline: none !important;
+}
+.checked-color-blue{
+	background-color: #337ab7 !important;
+}
+.checked-font-white{
+	color: #ffffff !important;
+}

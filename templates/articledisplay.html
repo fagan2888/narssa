@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="jquery-3.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../static/js/jquery-3.1.1.js"></script>
+
+<!--<script type="text/javascript" src="{{ url_for('static', filename='article.js') }}"></script>-->
+
+
+<link rel="stylesheet" type="text/css" href="../static/css/std_rules.css">
+<link rel="stylesheet" type="text/css" href="../static/css/article.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<title>Samachaar</title>
+</head>
+<body>
+	<div class="margin-top-30">
+	</div>
+	<div class="row" id="">
+		<div class="col-md-12">
+			<div class="col-md-9">
+				<h1 class="text-muted">Samachaar</h1>
+			</div>
+			<div class="col-md-3">
+				<div class="btn-group margin-top-15">
+                	<button class="btn btn-mini btn-success">{{username}}</button>
+                	<button class="btn btn-mini dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                	<ul class="dropdown-menu">
+                		<li><a href="/">Logout</a></li>
+                	</ul>
+            	</div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<hr>
+		</div>
+		<div class="col-md-12" id="">
+			<div class="row container-fluid" id="content">
+				<div class="col-md-8">
+					<h3 class="text-justify" id="headline">{{ newsinfo['Headline'] }}</h3>
+					<div class="date">{{ newsinfo['Date'] }}</div>
+					<hr>
+				</div>
+				<div class="col-md-4">
+					<div class="margin-top-75"></div>
+					<h4> Related Articles </h4>
+				</div>
+				<div class="col-md-8">
+					<div class="col-md-6">
+						<div class="row">
+							<figure><img src="{{url_for('static',filename='images/'+newsinfo['Image']) }}" alt="About image" /> </figure>
+						</div>							
+					</div>
+					<div class="">
+						<p class="text-justify" id="summary">{{ newsinfo['Content']}}</p>
+					</div>
+					<div class="margin-top-30">
+						<h4>Reflections of Twitter Community</h4>
+					</div>
+					<div class="">
+						<div class="btn-group btn-group-justified" role="group" aria-label="..." id="scoreFeed">
+						    
+							<div class="btn-group" role="group">
+								
+								<button type="submit" class="btn btn-default" disabled>{{ newsinfo['Excited'] }}%</button>
+							</div>
+							
+							
+							<div class="btn-group" role="group">
+							
+								<button type="radio" class="btn btn-default" disabled>{{ newsinfo['Happy'] }}%</button>
+							
+							</div>
+							
+
+							<div class="btn-group" role="group">
+							
+								<button type="radio" class="btn btn-default" disabled>{{ newsinfo['Neutral'] }}%</button>
+							</div>
+							
+							<div class="btn-group" role="group">
+							
+								<button type="radio" class="btn btn-default" disabled>{{ newsinfo['Sad'] }}%</button>
+							
+							</div>
+
+							<div class="btn-group" role="group">
+							
+								<button type="radio" class="btn btn-default" disabled>{{ newsinfo['Morose'] }}%</button>
+							
+							</div>
+						</div>
+						<div class="btn-group btn-group-justified" role="group" aria-label="..." id="reactUser">
+						
+							<div class="btn-group" role="group">
+							
+								<div type="submit" class="btn btn-primary neutral" name="Excited" value="1"><span>Excited </span></div>
+								
+							</div>
+						
+						
+							<div class="btn-group" role="group">
+								<div type="submit" class="btn btn-info neutral" name="Happy" value="2"><span>Happy</span></div>
+							</div>
+						
+						
+							<div class="btn-group" role="group">
+								
+								<div type="" class="btn btn-default neutral" name="Neutral" value="3"><span>Neutral</span></div>
+							</div>
+						
+						
+							<div class="btn-group" role="group">
+								<div type="submit" class="btn btn-warning neutral" name="Sad" value="4"><span>Sad</span></div>
+							</div>
+						
+						
+
+							<div class="btn-group" role="group">
+								<div type="submit" class="btn btn-danger neutral" name="Morose" value="5"><span>Angry</span></div>
+							</div>
+						
+						</div>
+					</div>
+				</div>
+			<div class="col-md-4" id="relatedArticles">
+					{%  for result in results %}
+					<div class="container-fluid background-color-light-blue" id="">
+						<div class="row">
+							<div class="col-md-4">
+								<figure>
+									<img src="{{url_for('static',filename='images/'+result['Image']) }}" alt="About image" />
+								</figure>
+							</div>
+							<div class="col-md-8">
+								<p class="font-family-Baskerville-Old-Face"> <a href="/articleview/{{ result['ArticleNo'] }}" id ="{{result['ArticleNo'] }}">{{ result['Headline'] }}</a></p>
+							</div>
+						</div>
+
+					</div>
+					{%endfor%}
+				</div>	
+			</div>
+			<div class="margin-top-15">
+			</div>
+			<div id="content1" class="col-md-12">
+			<!--Dynamically insert data here -->
+
+
+			</div>
+		</div>
+		
+	</div>
+</body>
+
+<script>
+	$(document).ready(function(){
+	$('.neutral').click( function() {
+		val = $(this).attr("value");
+		$.get("/"+val+"/{{ newsinfo['GenreId']|safe }}",function(data,res){
+			data= jQuery.parseJSON(data);
+			console.log(data);
+			var htmlchunk = '<div class="col-md-12">	\
+								<h4>Recommendation based on your reaction</h4>	\
+							</div>	\
+							<div class="row">	\
+								<div class="col-md-12">	';
+			
+			jQuery.each(data, function(i, val) {
+			  $("#" + i).append(document.createTextNode(" - " + val));
+				htmlchunk += 	'	<div class="col-md-3 background-color-light-blue">	\
+										<figure>	\
+											<img src="../static/images/'+ val.Image +'" width="200px" height="100px">	\
+										</figure>	\
+										<a href="'+val.ArticleId+'">'+ val.Headline +'</a>	\
+											<p>'+ val.Date +'</p>	\
+									</div>';
+			});
+			htmlchunk += '</div></div>';
+			$("#content1").html(htmlchunk);
+		      var hash = "#content1";
+
+		      // Using jQuery's animate() method to add smooth page scroll
+		      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+		      $('html, body').animate({
+		        scrollTop: $(hash).offset().top
+		      }, 800, function(){
+		   
+		        // Add hash (#) to URL when done scrolling (default click behavior)
+		        window.location.hash = hash;
+		      });
+		});
+	    // $.ajax({
+	    //     url: '/neutral/{{ newsinfo['GenreId']|safe }}',
+	    //     type: 'GET',
+	    //     success: function(response) {
+	    //     	console.log(response);
+		   //      console.log("WE ARE HERE......");
+	    //     },
+	    //     error: function(error) {
+	    //         console.log(error);
+	    //     }
+	    // });
+
+	});
+	});
+
+
+</script>
+
+</html>
